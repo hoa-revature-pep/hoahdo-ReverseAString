@@ -13,9 +13,35 @@ public class StringReverse {
      * @return the reverse of str.
      */
     public String reverse(String str){
+        /**
+         * StringBuilder strBeforeReverse = new StringBuilder(str);
+         * StringBuilder strAfterReverse =  strBeforeReverse.reverse();
+         * return strAfterReverse.toString();
+         */
 
-        StringBuilder theStr = new StringBuilder(str);
-        StringBuilder reversedStr =  theStr.reverse();
-        return reversedStr.toString();
+        // convert String to char array
+        char[] strArr = str.toCharArray();
+
+        // create interator variables
+        int a = 0;
+        int z = strArr.length-1;
+        
+        while (a < z) {
+            // create two pointers
+            char leftPnter = strArr[a];
+            char rightPnter = strArr[z];
+
+            // assign variable to hold left pointer value
+            char temp = leftPnter;
+            
+            strArr[a] = rightPnter;
+            strArr[z] = temp;
+
+            a++; // increment left side
+            z--; // decrement right side
+        }
+
+        String reversedStr = new String(strArr);
+        return reversedStr;
     }
 }
